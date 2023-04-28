@@ -3,14 +3,14 @@ import { Box } from "@mui/system";
 import React from "react";
 import FeedbackItem from "./FeedbackItem";
 
-const FeedbackList = ({ feedback }) => {
+const FeedbackList = ({ feedback, handleDelete }) => {
   if (!feedback || feedback.length === 0) {
     return <Typography>No Feedback yet</Typography>;
   }
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{}}>
       {feedback.map((item) => (
-        <FeedbackItem key={item.id} item={item} />
+        <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
       ))}
     </Box>
   );
