@@ -2,7 +2,7 @@ import { Button } from "@mui/base";
 import { Card, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
-const FeedbackItem = () => {
+const FeedbackItem = ({ item }) => {
   const handleClick = () => {
     setRating((prev) => {
       console.log(prev);
@@ -37,10 +37,10 @@ const FeedbackItem = () => {
           margin: "-25px",
         }}
       >
-        {rating}
+        {item.rating}
       </Typography>
       <Typography className='text-display' sx={{ p: 2, mx: 3, color: "black" }}>
-        {text}
+        {item.text}
       </Typography>
       <Button onClick={handleClick}>Click</Button>
     </Card>
