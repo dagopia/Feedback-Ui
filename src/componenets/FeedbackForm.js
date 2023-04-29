@@ -2,7 +2,7 @@ import { Card, Typography, Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import RatingSelect from "./RatingSelect";
-const FeedbackForm = () => {
+const FeedbackForm = ({ handleAdd }) => {
   const [text, SetTtext] = useState("");
   const [rating, SetRating] = useState(10);
 
@@ -23,6 +23,18 @@ const FeedbackForm = () => {
     }
     SetTtext(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        text,
+        rating,
+      };
+      handleAdd(newFeedback);
+      SetTtext("");
+    }
+  };
   return (
     <Card
       sx={{
@@ -36,7 +48,7 @@ const FeedbackForm = () => {
         display: "flex",
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
         <RatingSelect select={(rating) => SetRating(rating)} />
         <Box>
