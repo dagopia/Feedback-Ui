@@ -40,10 +40,9 @@ const FeedbackForm = ({ handleAdd }) => {
       sx={{
         backgroundColor: "white",
         color: "black",
-        width: "320px",
+        maxWidth: "340px",
         fontWeight: "700px",
         borderRadius: "18px",
-        m: 2,
         p: 3,
         display: "flex",
       }}

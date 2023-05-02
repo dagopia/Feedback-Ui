@@ -6,7 +6,12 @@ const FeedbackStat = ({ feedback }) => {
     return acc + cur.rating;
   }, 0);
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
       <h4>{feedback.length} Reviews</h4>
       <h4>Avarage Rating:{isNaN(avarage) ? 0 : avarage}</h4>
     </Box>

@@ -20,7 +20,8 @@ const FeedbackItem = ({ item, handleDelete }) => {
       sx={{
         backgroundColor: "white",
         color: "#ff6a95",
-        width: "300px",
+        // width: "300px",
+        maxWidth: "300px",
         fontWeight: "bold",
         borderRadius: "18px",
         m: 2,

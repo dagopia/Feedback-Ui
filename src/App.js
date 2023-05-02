@@ -7,6 +7,10 @@ import FeedbackData from "./Data/FeedbackData";
 import FeedbackList from "./componenets/FeedbackList";
 import FeedbackStat from "./componenets/FeedbackStat";
 import FeedbackForm from "./componenets/FeedbackForm";
+import { BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import About from "./Pages/About";
+import Home from "./Pages/Home";
 const App = () => {
   const [feedback, setFeedback] = useState(FeedbackData);
   const addFeedback = (newFeedback) => {
@@ -19,15 +23,24 @@ const App = () => {
     }
   };
   return (
-    <Box className='container' sx={{ color: "white" }}>
-      <Header />
-      <div>
-        <FeedbackForm handleAdd={addFeedback} />
-        <FeedbackStat feedback={feedback} />
-        <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
-        {/* <FeedbackItem /> */}
-      </div>
-    </Box>
+    <BrowserRouter>
+      <Box
+        className='container'
+        sx={{
+          color: "white",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Header />
+        <Routes>
+          <Route path='/about' element={<About />} />
+          <Route exact path='/' element={<Home />} />
+        </Routes>
+      </Box>
+    </BrowserRouter>
   );
 };
 export default App;
