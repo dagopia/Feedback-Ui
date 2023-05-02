@@ -1,5 +1,5 @@
-import { SupervisedUserCircleRounded } from "@mui/icons-material";
-import { Typography, Box, Card, Button } from "@mui/material";
+import { ArrowBack, SupervisedUserCircleRounded } from "@mui/icons-material";
+import { Typography, Box, Card, Button, Link } from "@mui/material";
 import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -28,10 +28,14 @@ function About() {
       <Button
         variant='contained'
         startIcon={<ArrowForwardIcon />}
-        sx={{ bgcolor: "#ff6a95", color: "white" }}
+        sx={{ bgcolor: "black", color: "#ff6a95" }}
       >
         More
       </Button>
+      <Link href='/' sx={{ color: "#ff6a95", m: 2, p: 1 }}>
+        <ArrowBack sx={{ color: "black" }} />
+        Back To Home
+      </Link>
     </Card>
   );
 }
