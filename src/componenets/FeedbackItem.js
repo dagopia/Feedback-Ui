@@ -27,6 +27,7 @@ const FeedbackItem = ({ item, handleDelete }) => {
         m: 2,
         p: 2,
         display: "flex",
+        border: "3px solid red",
       }}
     >
       <Typography
