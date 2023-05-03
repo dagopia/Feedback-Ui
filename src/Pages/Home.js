@@ -11,11 +11,7 @@ function Home() {
     newFeedback.id = uuidv4();
     setFeedback([newFeedback, ...feedback]);
   };
-  const deleteFeedback = (id) => {
-    if (window.confirm("Are you sure ypu wnat to delete?")) {
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
-  };
+
   return (
     <Box
       sx={{
@@ -26,8 +22,8 @@ function Home() {
       }}
     >
       <FeedbackForm handleAdd={addFeedback} />
-      <FeedbackStat feedback={feedback} />
-      <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
+      <FeedbackStat />
+      <FeedbackList />
       {/* <FeedbackItem /> */}
     </Box>
   );

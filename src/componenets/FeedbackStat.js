@@ -1,7 +1,11 @@
 import { Box } from "@mui/system";
 import React from "react";
+import { useContext } from "react";
+import FeedbackContext from "../Context/FeedbackContext";
 
-const FeedbackStat = ({ feedback }) => {
+const FeedbackStat = () => {
+  const { feedback } = useContext(FeedbackContext);
+
   let avarage = feedback.reduce((acc, cur) => {
     return acc + cur.rating;
   }, 0);

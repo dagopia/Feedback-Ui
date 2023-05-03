@@ -3,7 +3,11 @@ import { Card, Typography, Box } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-const FeedbackItem = ({ item, handleDelete }) => {
+import { useContext } from "react";
+import FeedbackContext from "../Context/FeedbackContext";
+
+const FeedbackItem = ({ item }) => {
+  const { deleteFeedback } = useContext(FeedbackContext);
   const handleClick = () => {
     setRating((prev) => {
       console.log(prev);
@@ -27,7 +31,6 @@ const FeedbackItem = ({ item, handleDelete }) => {
         m: 2,
         p: 2,
         display: "flex",
-        border: "3px solid red",
       }}
     >
       <Typography
@@ -51,7 +54,7 @@ const FeedbackItem = ({ item, handleDelete }) => {
       <Box
         sx={{ display: "flex", justifyContent: "flex-end", alignItems: "left" }}
       >
-        <CloseIcon tyope='button' onClick={(id) => handleDelete(item.id)} />
+        <CloseIcon tyope='button' onClick={(id) => deleteFeedback(item.id)} />
       </Box>
     </Card>
   );

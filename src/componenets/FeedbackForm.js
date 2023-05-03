@@ -1,14 +1,18 @@
 import { Card, Typography, Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import RatingSelect from "./RatingSelect";
-const FeedbackForm = ({ handleAdd }) => {
+import FeedbackContext from "../Context/FeedbackContext";
+
+const FeedbackForm = () => {
   const [text, SetTtext] = useState("");
   const [rating, SetRating] = useState(10);
 
   const [btnDisabled, SetbtnDisabled] = useState(true);
 
   const [message, SetMessage] = useState("");
+
+  const { addFeedback } = useContext(FeedbackContext);
 
   const handleChange = (e) => {
     if (text === "") {
@@ -31,10 +35,11 @@ const FeedbackForm = ({ handleAdd }) => {
         text,
         rating,
       };
-      handleAdd(newFeedback);
+      addFeedback(newFeedback);
       SetTtext("");
     }
   };
+
   return (
     <Card
       sx={{
