@@ -1,6 +1,6 @@
 import { Card, Typography, Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import RatingSelect from "./RatingSelect";
 import FeedbackContext from "../Context/FeedbackContext";
 
@@ -12,7 +12,16 @@ const FeedbackForm = () => {
 
   const [message, SetMessage] = useState("");
 
-  const { addFeedback } = useContext(FeedbackContext);
+  const { addFeedback, feedbackEdit, updateFeedback } =
+    useContext(FeedbackContext);
+  useEffect(() => {
+    console.log("Hello");
+    if (feedbackEdit.edit === true) {
+      SetbtnDisabled(false);
+      SetTtext(feedbackEdit.item.text);
+      SetRating(feedbackEdit.item.rating);
+    }
+  }, [feedbackEdit]);
 
   const handleChange = (e) => {
     if (text === "") {
@@ -35,7 +44,18 @@ const FeedbackForm = () => {
         text,
         rating,
       };
-      addFeedback(newFeedback);
+
+      if (feedbackEdit.edit === true) {
+        updateFeedback(feedbackEdit.item.id, newFeedback);
+      } else {
+        addFeedback(newFeedback);
+      }
+      // if (feedbackEdit.edit === true) {
+      //   updateFeedback(feedbackEdit.item.id, newFeedback);
+      // } else {
+      //   addFeedback(newFeedback);
+      // }
+
       SetTtext("");
     }
   };
