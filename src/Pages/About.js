@@ -32,7 +32,7 @@ function About() {
       >
         More
       </Button>
-      <Link href='/' sx={{ color: "#ff6a95", m: 2, p: 1 }}>
+      <Link to='/' sx={{ color: "#ff6a95", m: 2, p: 1 }}>
         <ArrowBack sx={{ color: "black" }} />
         Back To Home
       </Link>
