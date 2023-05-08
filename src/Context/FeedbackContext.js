@@ -13,7 +13,7 @@ export const FeedbackProvider = ({ children }) => {
     const response = await fetch("http://localhost:5000/feedback");
     const data = await response.json();
 
-    console.log(data);
+    setFeedback(data);
   };
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
@@ -30,22 +30,29 @@ export const FeedbackProvider = ({ children }) => {
     });
 
     const data = await response.json();
-    setFeedback([data, ...feedback]);
+    setFeedback([data]);
   };
 
   //delete fedd back item
   const deleteFeedback = async (id) => {
     if (window.confirm("Are you sure ypu wnat to delete?")) {
-      await fetch("http://localhost:5000/feedback/${id}", { method: "DELETE" });
+      await fetch(`http://localhost:5000/feedback/${id}`, { method: "DELETE" });
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
   //update feedback item
-  const updateFeedback = (id, updatedItem) => {
+  const updateFeedback = async (id, updatedItem) => {
+    const response = await fetch(`http://localhost:5000/feedback/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedItem),
+    });
+    const data = await response.json();
+
     setFeedback(
-      feedback.map((item) =>
-        item.id === id ? { ...item, ...updatedItem } : item
-      )
+      feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
     );
   };
   //function to set item to be updated
